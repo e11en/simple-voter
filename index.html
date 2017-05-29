@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Boss Ross Episode Voter</title>
+    <link rel="SHORTCUT ICON" href="http://img.diply.com/article-images/a/e869736a-1687-4fe6-ab23-bb4cfdbd9573.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+    <h2 class="title">BOB ROSS EPISODE VOTER</h2> 
+    <button id="btn-sort" onclick="changeSortByVotes()">Sort by votes</button>
+    
+    <div class="paintings"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    <script>
+        var sortByVotes = false;
+        function changeSortByVotes(){
+            sortByVotes = !sortByVotes;
+            getData();
+        }
+    
+        $(function() {
+            $('body').on('click', '.btn-vote', function() {
+                var id = $(this).attr("data-id");
+                console.log("Clicked: " + id);
+                saveVote(id);
+            });
+            getData();
+            
+            $('#btn-sort').click('.btn-vote', function() {
+                var txt = sortByVotes ? 'Sort by name' : 'Sort by votes';
+                $(this).text(txt);
+            });
+        });
+        
+        function getData() {
+            var sort = sortByVotes ? 'votes' : '';
+            
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                url: './functions.php',
+                data: { 
+                    action: 'getData',
+                    sort: sort
+                }
+            })
+            .done(function( data ) {
+                displayData(data);
+            });
+        }
+        
+        function displayData(data) {
+            $('.paintings').empty();
+
+            $.each( data, function( i, painting ) {
+              $('.paintings').append('<div class="episode"><h4>' + painting['name'] + '</h4><img src="./img/' + painting['id'] + '.jpg"><div class="vote-wrapper"><span>' + painting['votes'] + '</span><button data-id="' + painting['id'] + '" class="btn-vote"></button></div></div>');
+            });
+        }
+        
+        function saveVote(id) {
+            $.ajax({
+                method: "POST",
+                url: './functions.php',
+                data: { 
+                    action: 'vote',
+                    id: id
+                }
+            })
+            .done(function( data ) {
+                getData();
+            });
+        }
+        
+    </script>
+
+</body>
+</html>

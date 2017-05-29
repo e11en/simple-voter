@@ -1,0 +1,60 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title {
+    font-size: 2em;
+    text-align: center;
+}
+
+#btn-sort {
+    text-shadow: 1px 1px 3px #666666;
+    color: #ffffff;
+    padding: 10px;
+    background: #3498db;
+    text-decoration: none;
+    border: none;
+}
+
+#btn-sort:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
+
+.episode {
+    border: 1px solid #bbbaba;
+    display: inline-block;
+    margin: 1em;
+}
+
+.episode h4 {
+    text-align: center;
+}
+
+.vote-wrapper {
+    height: 45px;
+}
+
+.vote-wrapper span {
+    font-size: 2em;
+    padding-left: 1em;
+    line-height: 1.5em;
+}
+
+.vote-wrapper button {
+    background: url("img/like.png") no-repeat scroll 10px 10px #f3f3f3;
+    background-size: 80%;
+    border: none;
+    width: 97px;
+    height: 45px;
+    float: right;
+}
+
+.vote-wrapper button:hover {
+    border: 3px solid #f3f3f3;
+}
+
+.vote-wrapper button:active {
+    background-color: #d2cece;
+    border: 3px solid #d2cece;
+}
