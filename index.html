@@ -59,7 +59,7 @@
             $('.paintings').empty();
 
             $.each( data, function( i, painting ) {
-              $('.paintings').append('<div class="episode"><h4>' + painting['name'] + '</h4><img src="./img/' + painting['id'] + '.jpg"><div class="vote-wrapper"><span>' + painting['votes'] + '</span><button data-id="' + painting['id'] + '" class="btn-vote"></button></div></div>');
+              $('.paintings').append('<div class="episode"><h4>' + painting['name'] + '</h4><img src="./img/' + painting['id'] + '.jpg"><div class="vote-wrapper"><span>' + painting['votes'] + '</span><button data-id="' + painting['id'] + '" class="btn-vote"><p>Like</p></button></div></div>');
             });
         }
         

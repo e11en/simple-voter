@@ -42,8 +42,8 @@ body {
 }
 
 .vote-wrapper button {
-    background: url("img/like.png") no-repeat scroll 10px 10px #f3f3f3;
-    background-size: 80%;
+    background: url("img/thumb.png") no-repeat scroll 5px 5px #f3f3f3;
+    background-size: 30%;
     border: none;
     width: 97px;
     height: 45px;
@@ -54,7 +54,14 @@ body {
     border: 3px solid #f3f3f3;
 }
 
-.vote-wrapper button:active {
+:active {
     background-color: #d2cece;
     border: 3px solid #d2cece;
+}
+
+.vote-wrapper button > p {
+    margin-left: 22px;
+    margin-top: 22px;
+    line-height: 0;
+    font-size: 2em;
 }
